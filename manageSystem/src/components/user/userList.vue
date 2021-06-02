@@ -7,12 +7,12 @@
     </el-breadcrumb>
     <el-card class="box-card">
       <el-row :gutter="20">
-        <el-col>
+        <el-col :span="9">
           <el-input placeholder="请输入内容">
             <el-button slot="append" icon="el-icon-search"></el-button>
           </el-input>
         </el-col>
-        <el-col>
+        <el-col :span="5">
           <el-button type="primary" @click="dialogVisible = true">添加用户</el-button>
         </el-col>
       </el-row>
@@ -219,7 +219,7 @@ export default {
         return this.$message.info('已取消删除')
       }
       const { data: res } = await this.$http.delete('users/' + id)
-      if (res.meta.status == 200) {
+      if (res.meta.status !== 200) {
         return this.$message.error('删除用户失败')
       }
       this.$message.success('删除用户成功')
